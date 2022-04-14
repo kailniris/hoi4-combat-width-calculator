@@ -90,9 +90,9 @@ export default defineComponent({
 
 <style scoped>
 table {
-  width: 250px;
-  margin-left: 10px;
-  margin-right: 10px;
+  width: 200px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 table,

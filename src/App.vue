@@ -5,6 +5,8 @@
     <CombatOptions :combat-options="combatOptions" />
 
     <PenaltyTables :terrains="terrains" />
+
+    <ReadMe />
   </div>
 </template>
 
@@ -12,9 +14,14 @@
 import { defineComponent } from 'vue';
 import terrains from './lib/terrains';
 import getCombatPenalties from './lib/combatPenaltyCalculator';
+import ReadMe from '../README.md';
 
 export default defineComponent({
   name: 'App',
+
+  components: {
+    ReadMe,
+  },
 
   data: () => ({
     terrains,
@@ -49,3 +56,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+html {
+  font-family: 'Roboto', sans-serif;
+}
+</style>
