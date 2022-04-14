@@ -2,7 +2,8 @@
 
 ## Description
 
-I created this tool in order to visualize which division widths work best on which terrain types in Hearts of Iron IV NSB. There are other sources dealing with this topic, however often those are simple graphs which are not suited to represent edge cases with the displayed combat widths.
+I created this GUI tool in order to visualize which division widths work best on which terrain types in Hearts of Iron IV NSB. There are other sources dealing with this topic, however often those are simple graphs which are not suited to represent edge cases with the displayed combat widths.  
+Link to GUI: https://kailniris.github.io/hoi4-combat-width-calculator/
 
 ## Considerations
 
