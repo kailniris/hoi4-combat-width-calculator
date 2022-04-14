@@ -13,4 +13,7 @@ export default defineConfig({
     }),
     Components(),
     Markdown()],
+  build: {
+    outDir: 'docs',
+  },
 });
