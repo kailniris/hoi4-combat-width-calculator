@@ -9,7 +9,7 @@
         type="checkbox"
         :value="terrain.selected"
         :checked="terrain.selected"
-        @input="toggleTerrain(terrain)"
+        @input="terrain.selected = !terrain.selected"
       />
       <label :for="terrain.name">{{ terrain.name }}</label>
     </template>
@@ -26,16 +26,6 @@ export default defineComponent({
     terrains: {
       type: Array,
       required: true,
-    },
-  },
-
-  emits: ['update:terrains'],
-
-  methods: {
-    toggleTerrain(terrain) {
-      // eslint-disable-next-line no-param-reassign
-      terrain.selected = !terrain.selected;
-      this.$emit('update:terrains', this.terrains);
     },
   },
 });

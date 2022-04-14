@@ -10,15 +10,13 @@
     <label for="seizeHoldBridge">Seize/Hold bridge</label>
 
     <label for="flanks">Number of flanks:</label>
-
+    <!-- eslint-disable vue/no-mutating-props -->
     <input
       id="flanks"
-      v-model="flanks"
+      v-model="combatOptions.flanks"
       type="number"
-      name="tentacles"
       min="0"
       max="4"
-      @input="updateFlanks"
     />
   </div>
 </template>
@@ -36,34 +34,13 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:combatOptions'],
-
-  computed: {
-    flanks: {
-      get() {
-        return this.combatOptions.flanks;
-      },
-      set(flanks) {
-        this.updateCombatOptions({
-          flanks,
-        });
-      },
-    },
-  },
-
   methods: {
-    updateCombatOptions(value) {
-      this.$emit('update:combatOptions', {
-        ...this.combatOptions,
-        ...value,
-      });
-    },
     toggleSeizeHoldBridge() {
-      const toggled = this.combatOptions.totalWidthModifier === 0.5;
+      const { combatOptions } = this;
+      const toggled = combatOptions.totalWidthModifier === 0.5;
 
-      this.updateCombatOptions({
-        totalWidthModifier: toggled ? 1 : 0.5,
-      });
+      // eslint-disable-next-line vue/no-mutating-props
+      combatOptions.totalWidthModifier = toggled ? 1 : 0.5;
     },
   },
 });

@@ -18,10 +18,10 @@
       </caption>
 
       <tr>
-        <th>Division Width</th>
-        <th>Min wasted width (Divisions)</th>
-        <th>Min Combat Penalty (Divisions)</th>
-        <th>Max Combat Penalty (Divisions)</th>
+        <th>Division width</th>
+        <th>Min wasted width (divisions)</th>
+        <th>Min combat penalty (divisions)</th>
+        <th>Max combat penalty (divisions)</th>
       </tr>
 
       <tr
@@ -50,9 +50,15 @@ export default defineComponent({
   name: 'PenaltyTables',
 
   props: {
-    selectedTerrains: {
+    terrains: {
       type: Array,
       required: true,
+    },
+  },
+
+  computed: {
+    selectedTerrains() {
+      return this.terrains.filter(({ selected }) => selected);
     },
   },
 

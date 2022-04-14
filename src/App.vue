@@ -1,54 +1,44 @@
 <template>
   <div>
-    <TerrainSelector v-model:terrains="terrains" />
+    <TerrainSelector :terrains="terrains" />
 
-    <CombatOptions v-model:combat-options="combatOptions" />
+    <CombatOptions :combat-options="combatOptions" />
 
-    <PenaltyTables :selected-terrains="selectedTerrains" />
+    <PenaltyTables :terrains="terrains" />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { terrains, getBattlePenalties } from './lib/hoi4';
+import terrains from './lib/terrains';
+import getCombatPenalties from './lib/combatPenaltyCalculator';
 
 export default defineComponent({
   name: 'App',
 
   data: () => ({
     terrains,
-    hoi4: [],
     combatOptions: {
       totalWidthModifier: 1,
       flanks: 0,
     },
   }),
 
-  computed: {
-    selectedTerrains() {
-      return this.terrains.filter(({ selected }) => selected);
-    },
-  },
-
   watch: {
     combatOptions: {
       deep: true,
-      handler() {
-        this.getBattlePenalties();
+      immediate: true,
+      handler(combatOptions) {
+        this.getCombatPenalties(combatOptions);
       },
     },
   },
 
-  mounted() {
-    this.getBattlePenalties();
-  },
-
   methods: {
-    getBattlePenalties() {
-      const { combatOptions } = this;
-
+    getCombatPenalties(combatOptions) {
       this.terrains = terrains.map((terrain) => {
-        terrain.combatPenalties = getBattlePenalties({
+        // eslint-disable-next-line no-param-reassign
+        terrain.combatPenalties = getCombatPenalties({
           terrain,
           ...combatOptions,
         });
