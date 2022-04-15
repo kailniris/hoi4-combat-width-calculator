@@ -20,8 +20,10 @@
       <tr>
         <th>Division width</th>
         <th>Min wasted width (divisions)</th>
-        <th>Min combat penalty (divisions)</th>
+        <th>Combat penalty (divisions)</th>
+        <!--
         <th>Max combat penalty (divisions)</th>
+        -->
       </tr>
 
       <tr
@@ -35,9 +37,11 @@
         <td :style="{ 'background-color': combat.minCombatPenaltyColor }">
           {{ formatMinCombatPenalty(combat) }}
         </td>
+        <!--
         <td :style="{ 'background-color': combat.maxCombatPenaltyColor }">
           {{ formatMaxCombatPenalty(combat) }}
         </td>
+        -->
       </tr>
     </table>
   </div>
